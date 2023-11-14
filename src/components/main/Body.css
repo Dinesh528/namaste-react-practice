@@ -1,0 +1,11 @@
+.container{
+    margin: 66px;
+}
+.filter{
+    display: flex;
+}
+@media only screen and (max-width: 600px) {
+    .container{
+        margin: 0;
+    }
+}
