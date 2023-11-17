@@ -1,11 +1,12 @@
 import React, { useState,useEffect } from "react";
 import CardComponent,{withPromotedLabel} from "./CardComponent";
-import { data } from "../../utills/mockData";
 import "./Body.css";
 import Shimmer from "../Shimmer";
 import { Link } from "react-router-dom";
 import {RES_LIST_URL} from "../../utills/constants";
 import useOnlineStatus from "../../utills/custom hooks/useOnlineStatus";
+import { Box, Button, Grid, TextField } from "@mui/material";
+//import { data } from "../../utills/mockData";
 
 const BodyComponent = () => {
   const [listOfRestaurants, setListOfRestraunt] = useState([]);
@@ -55,24 +56,62 @@ const BodyComponent = () => {
 
     
   return (
-    <div className="container">
-      <div className="filter">
-        <div className="search">
-          <input type="text" className="search-bar" value={searchText} onChange={(e)=>{setSearchText(e.target.value)}}/>
-          <button onClick={HandleFilterRes}
-            >Search</button>
-        </div>
-        <button onClick={HandleTopRated} className="filter-btn bg-slate-600">
-          Top Rated Resturants
-        </button>
-        <button onClick={()=>{setFilteredRestaurant(listOfRestaurants); setSearchText("")}}>Clear</button>
-      </div>
+    <Box sx={{padding:{xs:0,md:"20px"},margin:"2rem"}}>
+      <Box sx={{ display: "flex", flexDirection: { xs: 'column', md: 'row' }, marginBottom: "1rem", justifyContent: "center" }}>
+        
+        <TextField
+          label="Search Restaurant"
+          type="text"
+          className="search-bar"
+          value={searchText}
+          onChange={(e) => { setSearchText(e.target.value) }}
+          sx={{ 
+            marginBottom: { xs: "1rem", md: 0 }, 
+            width: { xs: '100%', md: "350px" }, 
+            marginRight: { xs: 0, md: "1rem" }, 
+          }}
+        />
 
-      <div className="card-container">
+        <Box sx={{ display: "flex", flexDirection: { xs: 'column', md: 'row' } }}>
+          <Button
+            variant="outlined"
+            onClick={HandleFilterRes}
+            sx={{ width: '100%', marginRight: { xs: 0, md: "1rem" },marginBottom:{xs:"0.5rem",md:0} }}
+          >
+            Search
+          </Button>
+
+          <Button
+            variant="outlined"
+            onClick={HandleTopRated}
+            sx={{
+               width: '100%',
+               marginRight: { xs: 0, md: "1rem" }, 
+               display: { xs: 'none', md: "inline-block" },
+              }}
+          >
+            Top Rated Restaurants
+          </Button>
+
+          <Button
+            variant="outlined"
+            color="warning"
+            onClick={() => { setFilteredRestaurant(listOfRestaurants); setSearchText("") }}
+            sx={{ 
+              width: '100%',
+              marginTop:{xs:"0.5rem",md:0} 
+            }}
+          >
+            Clear
+          </Button>
+        </Box>
+      </Box>
+
+      <Box sx={{display:"flex",flexWrap:"wrap",justifyContent:"center",marginTop:"1rem"}}>
         {filteredRestaurant?.map((x) => (
           
           <div key={x.info.id}>
-            <Link to={"/restaurants/"+x.info.id}>
+            <Link to={"/restaurants/"+x.info.id} style={{textDecoration:"none",color:"black"}}>
               {
                 x.info.veg? <RestaurantCardPromotedLabel resData={x?.info}/> : <CardComponent
                 resData={x?.info}/>
@@ -81,8 +120,8 @@ const BodyComponent = () => {
           </Link>
           </div>
         ))}
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 

@@ -22,12 +22,15 @@ const Grocery = lazy(()=>import ('./components/Gorcery'))
 
 function App() {
   return (
-    <div className="">
-      <HeaderComponent/>
-      <Outlet/>
+    <div className="app-container">
+      <HeaderComponent />
+      <div className="content-container">
+        <Outlet />
+      </div>
     </div>
   );
 }
+
 //short cut to create a component rafce
 export const appRouter = createBrowserRouter([
   {

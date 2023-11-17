@@ -8,6 +8,7 @@ width:  300px;
 }
 .shimmer-container{
     display: flex;
-    margin: 60px;
+    justify-content: center;
     flex-wrap: wrap;
+    margin-top: 8rem;
 }

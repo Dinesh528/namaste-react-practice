@@ -3,3 +3,17 @@
     flex-wrap: wrap;
 }
 
+/* .app-container {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+  }
+  
+.content-container {
+    margin-top: 60px;
+    padding: 20px; 
+    overflow-y: scroll;
+    height: calc(100vh - 60px);
+  }   */

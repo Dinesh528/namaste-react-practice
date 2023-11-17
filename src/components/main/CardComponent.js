@@ -39,9 +39,9 @@ export const withPromotedLabel = (CardComponent)=>{
             position:"absolute",
             background:"green",
             color:"white",
-            margin:"0.5rem",
-            padding:"0.6rem",
-            borderRadius:"10px" 
+            margin:"0.4rem",
+            padding:"0.5rem",
+            borderRadius:"10px"
             }}>
           Vegetarian
           </label>

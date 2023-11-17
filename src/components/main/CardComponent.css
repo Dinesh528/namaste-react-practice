@@ -2,10 +2,10 @@
     border: 1px solid #ccc;
     max-width:  300px;
     height:500px;
-   box-shadow:0 2px 4px rgba(0, 0, 0, 0.2) ;
-   border-radius: 8px;
-   padding: 5px;
-   margin: 5px;
+    box-shadow:0 2px 4px rgba(0, 0, 0, 0.2) ;
+    border-radius: 8px;
+    padding: 0.3rem;
+    margin: 0.6rem;
 }
 .card:hover{
     cursor: pointer;
@@ -20,3 +20,4 @@
 .card-content{
     padding: 10px;
 }
+
