@@ -20,7 +20,8 @@ import useOnlineStatus from "../../utills/custom hooks/useOnlineStatus";
 import { Link,useLocation  } from 'react-router-dom';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Badge from '@mui/material/Badge';
-
+import { useContext } from 'react';
+import userContext from '../../context/userContext';
 
 const drawerWidth = 240;
 const navItems = [
@@ -35,6 +36,8 @@ function HeaderComponent(props) {
   const onlineStatus = useOnlineStatus();
   const location = useLocation();
 
+  const userData = useContext(userContext);
+  
   const [cartItems, setCartItems] = React.useState(0); 
 
   const handleDrawerToggle = () => {
@@ -103,6 +106,7 @@ function HeaderComponent(props) {
           >
             <img className="logo" src={Logo} alt="food logo" style={{ width: "100px", height: "100px" }} />
           </Typography>
+          
           <Typography>
             {onlineStatus ? (
               <SignalWifi4BarIcon />
@@ -131,6 +135,9 @@ function HeaderComponent(props) {
               <ShoppingCartIcon />
             </Badge>
           </IconButton>
+          <Typography variant="h6" sx={{ display: { xs: 'none', sm: 'block' } }}>
+            {userData.loggedInUser}
+          </Typography>
         </Toolbar>
       </AppBar>
       <nav>

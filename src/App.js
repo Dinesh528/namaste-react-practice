@@ -7,8 +7,8 @@ import Contact from './components/Contact';
 import Error from './components/Error';
 import ResMenuPage from './components/ResMenuPage';
 //import Gorcery from './components/Gorcery';
-import { lazy,Suspense } from 'react';
-
+import { lazy,Suspense, useEffect,useState } from 'react';
+import UserContext from './context/userContext';
 
 //  chuncking
 //  Dynamic bundling
@@ -21,13 +21,28 @@ const About = lazy(()=>import('./components/About'))
 const Grocery = lazy(()=>import ('./components/Gorcery'))
 
 function App() {
+
+  const [ userInfo,setUserInfo] = useState();
+
+  useEffect(()=>{
+
+    const data = {
+      name:"Dinesh"
+    }
+
+    setUserInfo(data.name);
+
+  },[])
+
   return (
+    <UserContext.Provider value={{loggedInUser:userInfo,setUserInfo}}>
     <div className="app-container">
       <HeaderComponent />
       <div className="content-container">
         <Outlet />
       </div>
     </div>
+    </UserContext.Provider>
   );
 }
 

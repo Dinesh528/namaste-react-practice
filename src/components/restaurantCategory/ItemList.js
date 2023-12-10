@@ -5,7 +5,7 @@ import { CDN_URL } from '../../utills/constants'
 function ItemList({items}) {
     console.log(items)
   return (
-    <div>
+    <div >
             {items.map(item => (
                 <>
                 <Box key={item.card.info.id} sx={{ display: "flex", alignItems: "center" ,padding:"10px"}}>

@@ -4,20 +4,20 @@ import "./User.css";
 export default function User() {
   useEffect(()=>{
     const timer = setInterval(()=>{
-      console.log("useEffect");
+      //console.log("useEffect");
       
   },1000);
 
   //cleaning up the component
   //unmounting the component
   return ()=>{
-    console.log("useEffect returned");
+    //console.log("useEffect returned");
     clearInterval(timer)
   }
   },[])
     const [count,setCount]  = useState(0);
     const [count1] = useState(1)
-    console.log("render");
+    //console.log("render");
   return (
     <div className="usercard">
         <h1>Count = {count}</h1>

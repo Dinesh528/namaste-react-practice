@@ -1,11 +1,12 @@
-import React, { useState,useEffect } from "react";
+import React, { useState,useEffect,useContext } from "react";
 import CardComponent,{withPromotedLabel} from "./CardComponent";
 import "./Body.css";
 import Shimmer from "../Shimmer";
 import { Link } from "react-router-dom";
 import {RES_LIST_URL} from "../../utills/constants";
 import useOnlineStatus from "../../utills/custom hooks/useOnlineStatus";
-import { Box, Button, Grid, TextField } from "@mui/material";
+import { Box, Button, Grid, TextField, Typography } from "@mui/material";
+import UserContext from "../../context/userContext";
 //import { data } from "../../utills/mockData";
 
 const BodyComponent = () => {
@@ -19,12 +20,14 @@ const BodyComponent = () => {
       fetchData();
     },[])
 
+    const {loggedInUser,setUserInfo} = useContext(UserContext);
+
     const fetchData = async () => {
       const data = await fetch(
         RES_LIST_URL
       );
       const json = await data.json();
-      console.log(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+      //console.log(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
       setListOfRestraunt(
         json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
       );
@@ -42,7 +45,7 @@ const BodyComponent = () => {
 
     const HandleFilterRes=()=>{
       const filteredRes= listOfRestaurants.filter((res)=>res.info.name.toLowerCase().includes(searchText.toLowerCase()))
-      console.log(filteredRes);
+      //console.log(filteredRes);
       setFilteredRestaurant(filteredRes);
     }
     const isOnline = useOnlineStatus();
@@ -50,6 +53,7 @@ const BodyComponent = () => {
       return <h1>Please look at the internet connection</h1>
     }
     
+
     if(listOfRestaurants?.length === 0){
       return <Shimmer/>
     }
@@ -104,6 +108,16 @@ const BodyComponent = () => {
           >
             Clear
           </Button>
+        </Box>
+        <Box sx={{marginLeft:"1rem"}}>
+          <Typography>User Name: </Typography>
+          <TextField
+            type="text"
+            label="User Name"
+            value={loggedInUser}
+            onChange={(e)=>setUserInfo(e.target.value)}
+            />
+
         </Box>
       </Box>
 

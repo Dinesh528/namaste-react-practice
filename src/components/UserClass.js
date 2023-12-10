@@ -15,11 +15,11 @@ class UserClass extends Component{
             }  
           
         }
-        console.log("child constructor");
+        //console.log("child constructor");
     }
 
     async componentDidMount(){
-        console.log("child component Did Mount")
+        //console.log("child component Did Mount")
         // const data = await fetch("https://api.github.com/users/Dinesh528");
         // const json  = await data.json();
         // this.setState({
@@ -28,22 +28,22 @@ class UserClass extends Component{
         // console.log(json);
         
         this.timer = setInterval(()=>{
-            console.log("child component setInterval");
+            //console.log("child component setInterval");
         },1000);
 
     }
     componentDidUpdate(){
-        console.log("child component Did Update")
+        //console.log("child component Did Update")
     }
     componentWillUnmount(){
        
         clearInterval(this.timer);
-        console.log("child component Will Unmount");
+        //console.log("child component Will Unmount");
     }
     render(){
        
         const {login,id,avatar_url}= this.state.userInfo
-       console.log("child RENDER ")
+       //console.log("child RENDER ")
         return(
             <div className="usercard">
           
