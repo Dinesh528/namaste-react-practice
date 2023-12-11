@@ -20,8 +20,8 @@ import { useState } from 'react';
 
     const {name} = resInfo?.cards[0]?.card?.card?.info
 
-const { itemCards } =
-resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
+// const { itemCards } =
+// resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
 
 const categories =
     resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
@@ -30,7 +30,6 @@ const categories =
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
     
-    //console.log(categories)
 
     const handleAccordionChange = (index) => {
       setExpanded(index === expanded ? null : index);
@@ -45,7 +44,7 @@ const categories =
         {categories.map((category,index) => (
           <RestaurantCategory 
             data={category?.card?.card} 
-            key={category.id}
+            key={category.card.card.title}
             expanded={index === expanded}
             onChange={() => handleAccordionChange(index)}
           />))}

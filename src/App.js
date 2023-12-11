@@ -9,6 +9,7 @@ import ResMenuPage from './components/ResMenuPage';
 //import Gorcery from './components/Gorcery';
 import { lazy,Suspense, useEffect,useState } from 'react';
 import UserContext from './context/userContext';
+import Cart from './components/cart/Cart';
 
 //  chuncking
 //  Dynamic bundling
@@ -71,6 +72,10 @@ export const appRouter = createBrowserRouter([
       {
         path:"/restaurants/:resId",
         element:<ResMenuPage/>
+      },
+      {
+        path:"/cart/",
+        element:<Cart/>
       }
     ],
     errorElement:<Error/>

@@ -22,6 +22,8 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Badge from '@mui/material/Badge';
 import { useContext } from 'react';
 import userContext from '../../context/userContext';
+import { useSelector } from 'react-redux';
+
 
 const drawerWidth = 240;
 const navItems = [
@@ -36,19 +38,17 @@ function HeaderComponent(props) {
   const onlineStatus = useOnlineStatus();
   const location = useLocation();
 
+  const cartItems = useSelector((state)=>state.cart.items);
+  console.log(cartItems,"cartItems");
+
   const userData = useContext(userContext);
   
-  const [cartItems, setCartItems] = React.useState(0); 
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
 
-  const handleAddToCart = () => {
-   
-    setCartItems((prevCount) => prevCount + 1);
-  };
-
+  
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
@@ -130,12 +130,12 @@ function HeaderComponent(props) {
               </Button>
             ))}
           </Box>
-          <IconButton color="inherit" onClick={handleAddToCart}>
-            <Badge badgeContent={cartItems} color="warning">
-              <ShoppingCartIcon />
+          <IconButton color="inherit" >
+            <Badge badgeContent={cartItems.length} color="warning">
+              <Link to='/cart' style={{color:location.pathname === "/cart"?'orange' :"inherit"}}><ShoppingCartIcon /></Link>
             </Badge>
           </IconButton>
-          <Typography variant="h6" sx={{ display: { xs: 'none', sm: 'block' } }}>
+          <Typography variant="h6" sx={{ display: { xs: 'none', sm: 'block',mr:"10px" } }}>
             {userData.loggedInUser}
           </Typography>
         </Toolbar>

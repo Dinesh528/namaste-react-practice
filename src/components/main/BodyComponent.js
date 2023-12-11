@@ -58,7 +58,6 @@ const BodyComponent = () => {
       return <Shimmer/>
     }
 
-    
   return (
     <Box sx={{padding:{xs:0,md:"20px"},margin:"2rem"}}>
       <Box sx={{ display: "flex", flexDirection: { xs: 'column', md: 'row' }, marginBottom: "1rem", justifyContent: "center" }}>
@@ -124,7 +123,7 @@ const BodyComponent = () => {
       <Box sx={{display:"flex",flexWrap:"wrap",justifyContent:"center",marginTop:"1rem"}}>
         {filteredRestaurant?.map((x) => (
           
-          <div key={x.info.id}>
+          <div key={`${x.info?.id}-${x.info?.name}`}>
             <Link to={"/restaurants/"+x.info.id} style={{textDecoration:"none",color:"black"}}>
               {
                 x.info.veg? <RestaurantCardPromotedLabel resData={x?.info}/> : <CardComponent
