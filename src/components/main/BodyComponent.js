@@ -5,8 +5,7 @@ import Shimmer from "../Shimmer";
 import { Link } from "react-router-dom";
 import {RES_LIST_URL} from "../../utills/constants";
 import useOnlineStatus from "../../utills/custom hooks/useOnlineStatus";
-import { Box, Button, Grid, TextField, Typography } from "@mui/material";
-import UserContext from "../../context/userContext";
+import { Box, Button, TextField } from "@mui/material";
 //import { data } from "../../utills/mockData";
 
 const BodyComponent = () => {
@@ -20,7 +19,6 @@ const BodyComponent = () => {
       fetchData();
     },[])
 
-    const {loggedInUser,setUserInfo} = useContext(UserContext);
 
     const fetchData = async () => {
       const data = await fetch(
@@ -108,16 +106,7 @@ const BodyComponent = () => {
             Clear
           </Button>
         </Box>
-        <Box sx={{marginLeft:"1rem"}}>
-          <Typography>User Name: </Typography>
-          <TextField
-            type="text"
-            label="User Name"
-            value={loggedInUser}
-            onChange={(e)=>setUserInfo(e.target.value)}
-            />
-
-        </Box>
+        
       </Box>
 
       <Box sx={{display:"flex",flexWrap:"wrap",justifyContent:"center",marginTop:"1rem"}}>

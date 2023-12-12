@@ -6,3 +6,8 @@
 - slice ( cartSlice)
 - dispatch( action)
 - Updates the cart 
+
+# Types of Testing (developer)
+- Unit Testing
+- Integration
+- End to End Testing 

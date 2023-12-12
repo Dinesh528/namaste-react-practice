@@ -10,6 +10,7 @@ import ResMenuPage from './components/ResMenuPage';
 import { lazy,Suspense, useEffect,useState } from 'react';
 import UserContext from './context/userContext';
 import Cart from './components/cart/Cart';
+import ContextInputUser from './components/ContextInput';
 
 //  chuncking
 //  Dynamic bundling
@@ -76,6 +77,10 @@ export const appRouter = createBrowserRouter([
       {
         path:"/cart/",
         element:<Cart/>
+      },
+      {
+        path:"/context/",
+        element:<ContextInputUser/>
       }
     ],
     errorElement:<Error/>

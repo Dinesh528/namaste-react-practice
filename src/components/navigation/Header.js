@@ -31,6 +31,7 @@ const navItems = [
   { label: 'Gorcery', link: '/grocery' },
   { label: 'About', link: '/about' },
   { label: 'Contact Us', link: '/contact' },
+  { label: 'Context', link: '/context' },
 ];
 function HeaderComponent(props) {
   const { window } = props;
