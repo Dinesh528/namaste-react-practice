@@ -17,7 +17,7 @@ function ItemList({items}) {
     <div >
             {items.map(item => (
                 <>
-                <Box key={item.card.info.id} sx={{ display: "flex", alignItems: "center" ,padding:"10px"}}>
+                <Box key={item.card.info.id} sx={{ display: "flex", alignItems: "center" ,padding:"10px"}} data-testid="foodItems">
                     <Box sx={{ flex: 1 }}>
                         <Typography 
                             variant='body1' 

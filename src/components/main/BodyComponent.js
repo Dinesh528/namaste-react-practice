@@ -63,6 +63,7 @@ const BodyComponent = () => {
         <TextField
           label="Search Restaurant"
           type="text"
+          data-testid="searchInput"
           className="search-bar"
           value={searchText}
           onChange={(e) => { setSearchText(e.target.value) }}
@@ -112,7 +113,7 @@ const BodyComponent = () => {
       <Box sx={{display:"flex",flexWrap:"wrap",justifyContent:"center",marginTop:"1rem"}}>
         {filteredRestaurant?.map((x) => (
           
-          <div key={`${x.info?.id}-${x.info?.name}`}>
+          <div key={`${x.info?.id}-${x.info?.name}`} data-testid="resCard">
             <Link to={"/restaurants/"+x.info.id} style={{textDecoration:"none",color:"black"}}>
               {
                 x.info.veg? <RestaurantCardPromotedLabel resData={x?.info}/> : <CardComponent

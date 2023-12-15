@@ -4,11 +4,12 @@ import { CDN_URL } from "../../utills/constants";
 
 const CardComponent = (props) => {
   const { resData } = props;
+  // console.log(resData);
   const { cloudinaryImageId, name, avgRating, cuisines, costForTwo, areaName } =
     resData;
 
   return (
-    <div className="card flex">
+    <div className="card flex" >
       <img src={CDN_URL + cloudinaryImageId} className="card-image" />
       <div className="card-content">
         <div className="card-title">
@@ -33,7 +34,7 @@ export const withPromotedLabel = (CardComponent)=>{
   // returns a new Enhanced Component
   return (props)=>{
     return(
-      <div>
+      <div >
         <label 
           style={{
             position:"absolute",

@@ -13,7 +13,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import Logo from "../../assets/food-img.png";
+ import Logo from "../../assets/food-img.png";
 import SignalWifiOffIcon from "@mui/icons-material/SignalWifiOff";
 import SignalWifi4BarIcon from "@mui/icons-material/SignalWifi4Bar";
 import useOnlineStatus from "../../utills/custom hooks/useOnlineStatus";
@@ -39,6 +39,7 @@ function HeaderComponent(props) {
   const onlineStatus = useOnlineStatus();
   const location = useLocation();
 
+  const [login,setLogin] = React.useState("");
   const cartItems = useSelector((state)=>state.cart.items);
   console.log(cartItems,"cartItems");
 
@@ -130,9 +131,10 @@ function HeaderComponent(props) {
 
               </Button>
             ))}
+            <Button onClick={()=>setLogin(!login)} >{login?"Logout":"Login"}</Button>
           </Box>
-          <IconButton color="inherit" >
-            <Badge badgeContent={cartItems.length} color="warning">
+          <IconButton color="inherit" data-testid="cartItems">
+            <Badge badgeContent={cartItems.length} color="warning" >
               <Link to='/cart' style={{color:location.pathname === "/cart"?'orange' :"inherit"}}><ShoppingCartIcon /></Link>
             </Badge>
           </IconButton>
